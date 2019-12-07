@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"]
+    count: 0
   };
 
   //One way to apply styles
@@ -12,11 +11,25 @@ class Counter extends Component {
   //     fontWeight: "bold"
   //   };
 
+  handleIncrement = e => {
+    console.log(e);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  doHandleIncrement = () => {
+    this.handleIncrement({ id: 1 });
+  };
+
   render() {
     return (
       <React.Fragment>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.doHandleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </React.Fragment>
     );
   }
